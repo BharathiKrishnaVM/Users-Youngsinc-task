@@ -1,0 +1,33 @@
+
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="header">
+      <h3>User Details</h3>
+    </div>
+    <div class="row col-md-6">
+      <div class="form-group">
+        <label>id:</label>
+        <input class="form-control" type="text" placeholder="Enter your id" formControlName="id">
+      </div>
+      <div class="form-group">
+        <label>Name:</label>
+        <input class="form-control" type="text" placeholder="Enter your name" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label>Email ID:</label>
+        <input class="form-control" type="email" placeholder="Enter your email address" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label>Gender:</label>
+        <textarea class="form-control" type="text" formControlName="gender"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <input type="checkbox" data-toggle="toggle">
+      </div>
+      <div class="submit">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

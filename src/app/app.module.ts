@@ -4,17 +4,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TicketIssueComponent } from './ticket-issue/ticket-issue.component';
+
+import { UsersComponent } from './users/users.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TicketIssueComponent
+
+    UsersComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
