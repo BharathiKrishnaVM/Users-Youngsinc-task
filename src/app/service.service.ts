@@ -1,19 +1,26 @@
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpEvent, HttpHandler, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+ interface users{
+   name: string,
+   email: string,
+   gender: string,
+   status: string
+ }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
-  api_token = "ba95deae5c71ed059b6fe433430cc77d5784eed584025a8b4a24ea8a4fa7e498";
+  api_token:any = "7b7741eece4f83c0e036d13bd318d483f066427909fe2536365dadcee4a0e480";
   headers = new HttpHeaders({
     'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8;application/json',
     'Authorization': `${this.api_token}`});
+
   constructor(private http: HttpClient) {}
 
   getData(){
-    return this.http.get('https://gorest.co.in/public/v2/users', {headers: this.headers});
+    return this.http.get<users[]>('https://gorest.co.in/public/v2/users', {headers: this.headers});
   }
   saveData(userData):Observable<any>{
     return this.http.post('https://gorest.co.in/public/v2/users',userData, {headers: this.headers});

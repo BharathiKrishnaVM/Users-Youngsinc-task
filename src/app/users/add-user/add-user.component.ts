@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 
@@ -8,9 +8,8 @@ import { ServiceService } from 'src/app/service.service';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-   userForm: FormGroup;
-  formValue: any=[];
-  state: string = 'active';
+  userForm: FormGroup;
+  userDetails: any;
 
    constructor(private service: ServiceService){
      this.userForm = new FormGroup({
@@ -23,12 +22,15 @@ export class AddUserComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
   }
   onSubmit(){
 
     this.service.saveData(this.userForm.value).subscribe({next:res=>{
       if(res){
+        this.userDetails = res;
         console.log('response', res);
+        this.userForm.reset();
       }
     },
     error:(err:any) => {
@@ -37,8 +39,8 @@ export class AddUserComponent implements OnInit {
       }
     },
   })
-    console.log(this.userForm.value);
-    return this.userForm.value;
+  console.log(this.userForm.value);
+  return this.userForm.value;
   }
 
 }
