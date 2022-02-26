@@ -5,42 +5,31 @@ import { ServiceService } from 'src/app/service.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent implements OnInit {
   userForm: FormGroup;
   userDetails: any;
 
-   constructor(private service: ServiceService){
-     this.userForm = new FormGroup({
-       id: new FormControl(''),
-       name: new FormControl(''),
-       email: new FormControl(''),
-       gender: new FormControl(''),
-      status: new FormControl('')
-     })
-   }
-
-  ngOnInit(): void {
-
+  constructor(private service: ServiceService) {
+    this.userForm = new FormGroup({
+      name: new FormControl(''),
+      email: new FormControl(''),
+      gender: new FormControl(''),
+      status: new FormControl(''),
+    });
   }
-  onSubmit(){
 
-    this.service.saveData(this.userForm.value).subscribe({next:res=>{
+  ngOnInit(): void {}
+  onSubmit() {
+   let dummy:any = this.userForm.value;
+   console.log(dummy);
+    this.service.saveData(this.userForm.value).subscribe(res => {
       if(res){
-        this.userDetails = res;
-        console.log('response', res);
-        this.userForm.reset();
+          this.userDetails = res;
+          console.log('response', res);
+          this.userForm.reset();
       }
-    },
-    error:(err:any) => {
-      if(err){
-        console.log('error', err);
-      }
-    },
-  })
-  console.log(this.userForm.value);
-  return this.userForm.value;
+    })
   }
-
 }

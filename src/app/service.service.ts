@@ -12,10 +12,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-  api_token:any = "7b7741eece4f83c0e036d13bd318d483f066427909fe2536365dadcee4a0e480";
+  api_token:any = "ba95deae5c71ed059b6fe433430cc77d5784eed584025a8b4a24ea8a4fa7e498";
   headers = new HttpHeaders({
-    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8;application/json',
-    'Authorization': `${this.api_token}`});
+    'Content-Type' : 'application/json',
+    'Authorization': `Bearer ${this.api_token}`});
 
   constructor(private http: HttpClient) {}
 
